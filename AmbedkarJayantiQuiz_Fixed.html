@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Ambedkar Jayanti Quiz 2026 | NSS </title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Raleway:wght@300;400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy:      #03091E;
+    --deep:      #070F2E;
+    --royal:     #0F2F8A;
+    --mid:       #1A4FBF;
+    --sky:       #3B82F6;
+    --light:     #60A5FA;
+    --pale:      #BFDBFE;
+    --white:     #FFFFFF;
+    --off:       #EEF3FF;
+    --gold:      #E9B84A;
+    --gold-l:    #F5D57A;
+    --card-bg:   rgba(10, 28, 90, 0.55);
+    --card-bd:   rgba(96, 165, 250, 0.25);
+    --glass:     rgba(255,255,255,0.04);
+  }
+
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    min-height: 100vh;
+    background: var(--navy);
+    font-family: 'Raleway', sans-serif;
+    color: var(--white);
+    overflow-x: hidden;
+  }
+
+  .bg-layer {
+    position: fixed; inset: 0; pointer-events: none; z-index: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 15% 40%, rgba(15,47,138,0.5) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 50% at 85% 70%, rgba(26,79,191,0.3) 0%, transparent 65%),
+      radial-gradient(ellipse 90% 70% at 50% 10%, rgba(3,9,30,0.95) 0%, transparent 80%);
+  }
+
+  .bg-chakra {
+    position: fixed; right: -8vw; top: 50%;
+    transform: translateY(-50%);
+    width: min(75vw, 600px); height: min(75vw, 600px);
+    opacity: 0.045; pointer-events: none; z-index: 0;
+  }
+  .bg-chakra-left {
+    position: fixed; left: -15vw; top: 10%;
+    width: min(40vw, 320px); height: min(40vw, 320px);
+    opacity: 0.03; pointer-events: none; z-index: 0;
+  }
+
+  .screen {
+    display: none; min-height: 100vh; position: relative; z-index: 1;
+    padding: 24px 16px; flex-direction: column; align-items: center; justify-content: center;
+  }
+  .screen.active { display: flex; }
+
+  .fade-in  { animation: fadeIn  0.6s ease forwards; }
+  .slide-up { animation: slideUp 0.5s ease forwards; }
+
+  @keyframes fadeIn  { from { opacity:0; } to { opacity:1; } }
+  @keyframes slideUp { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:translateY(0); } }
+  @keyframes pulse   { 0%,100% { opacity:1; } 50% { opacity:0.6; } }
+  @keyframes spin    { to { transform: rotate(360deg); } }
+
+  .site-header {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 10px 20px; display: flex; align-items: center; justify-content: space-between;
+    background: rgba(3,9,30,0.8); backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(96,165,250,0.15);
+  }
+  .site-header .logo { font-family: 'Cinzel', serif; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; color: var(--pale); }
+  .site-header .event-tag { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.12em; color: var(--gold); text-transform: uppercase; }
+
+  .card {
+    background: var(--card-bg); border: 1px solid var(--card-bd); border-radius: 20px;
+    backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+    padding: 36px 28px; width: 100%; max-width: 540px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.08);
+  }
+
+  .display-title {
+    font-family: 'Cinzel', serif; font-size: clamp(1.6rem, 6vw, 2.8rem);
+    font-weight: 900; line-height: 1.1; letter-spacing: 0.04em;
+    background: linear-gradient(135deg, #fff 0%, var(--pale) 40%, var(--gold-l) 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .section-title { font-family: 'Cinzel', serif; font-size: clamp(1.1rem, 4vw, 1.6rem); font-weight: 700; letter-spacing: 0.06em; color: var(--pale); }
+  .subtitle { font-family: 'Cormorant Garamond', serif; font-size: clamp(0.95rem, 3vw, 1.15rem); color: var(--light); font-style: italic; opacity: 0.9; }
+  .label-text { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--sky); }
+  .body-text { font-size: 0.9rem; font-weight: 400; color: var(--pale); line-height: 1.6; }
+
+  .divider { width: 100%; height: 1px; background: linear-gradient(90deg, transparent, var(--sky), transparent); margin: 20px 0; opacity: 0.35; }
+  .gold-line { width: 60px; height: 2px; background: var(--gold); margin: 12px auto; border-radius: 2px; }
+
+  .form-group { margin-bottom: 20px; }
+  .form-group label { display: block; margin-bottom: 8px; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--sky); }
+  .form-group input, .form-group select {
+    width: 100%; padding: 14px 18px; background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(96,165,250,0.3); border-radius: 12px; color: var(--white);
+    font-family: 'Raleway', sans-serif; font-size: 0.95rem; font-weight: 500; outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s, background 0.3s; appearance: none; -webkit-appearance: none;
+  }
+  .form-group select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2360A5FA' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 16px center; padding-right: 44px; cursor: pointer;
+  }
+  .form-group select option { background: #0F2F8A; color: var(--white); }
+  .form-group input:focus, .form-group select:focus { border-color: var(--sky); box-shadow: 0 0 0 3px rgba(59,130,246,0.2); background: rgba(255,255,255,0.09); }
+  .form-group input::placeholder { color: rgba(255,255,255,0.3); }
+
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 15px 36px; border: none; border-radius: 50px;
+    font-family: 'Raleway', sans-serif; font-size: 0.9rem; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; cursor: pointer; transition: all 0.25s ease; width: 100%;
+  }
+  .btn-primary { background: linear-gradient(135deg, var(--mid) 0%, var(--sky) 100%); color: var(--white); box-shadow: 0 6px 24px rgba(59,130,246,0.4); }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(59,130,246,0.55); }
+  .btn-primary:active { transform: translateY(0); }
+  .btn-gold { background: linear-gradient(135deg, #C9850A 0%, var(--gold) 50%, var(--gold-l) 100%); color: #1A0500; font-weight: 800; box-shadow: 0 6px 24px rgba(233,184,74,0.4); }
+  .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(233,184,74,0.55); }
+  .btn-outline { background: transparent; border: 1.5px solid var(--sky); color: var(--sky); }
+  .btn-outline:hover { background: rgba(59,130,246,0.12); transform: translateY(-1px); }
+
+  #screen-welcome { text-align: center; padding-top: 80px; }
+
+  .welcome-badge {
+    display: inline-flex; align-items: center; gap: 8px; padding: 6px 18px;
+    background: rgba(233,184,74,0.12); border: 1px solid rgba(233,184,74,0.35); border-radius: 50px;
+    font-size: 0.68rem; font-weight: 700; letter-spacing: 0.15em; color: var(--gold); text-transform: uppercase; margin-bottom: 28px;
+  }
+  .chakra-icon-lg { width: 100px; height: 100px; margin: 0 auto 28px; animation: spin 30s linear infinite; }
+  .start-note { font-size: 0.78rem; color: rgba(255,255,255,0.45); margin-top: 18px; font-weight: 500; }
+
+  #screen-register { padding-top: 80px; }
+  #screen-quiz { padding-top: 80px; }
+
+  .quiz-header { width: 100%; max-width: 540px; margin-bottom: 20px; }
+  .progress-row { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+  .progress-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; color: var(--sky); text-transform: uppercase; white-space: nowrap; }
+  .progress-bar-wrap { flex: 1; height: 4px; background: rgba(255,255,255,0.1); border-radius: 4px; }
+  .progress-bar-fill { height: 100%; background: linear-gradient(90deg, var(--mid), var(--sky)); border-radius: 4px; transition: width 0.4s ease; }
+
+  .q-number { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; color: rgba(255,255,255,0.35); text-transform: uppercase; margin-bottom: 10px; }
+  .q-text { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.05rem, 3.5vw, 1.3rem); font-weight: 600; line-height: 1.5; color: var(--white); margin-bottom: 28px; }
+
+  .options-grid { display: flex; flex-direction: column; gap: 12px; }
+  .option-btn {
+    display: flex; align-items: center; gap: 14px; padding: 14px 18px;
+    background: rgba(255,255,255,0.04); border: 1.5px solid rgba(96,165,250,0.2); border-radius: 14px;
+    color: var(--off); font-family: 'Raleway', sans-serif; font-size: 0.88rem; font-weight: 500;
+    cursor: pointer; text-align: left; transition: all 0.2s ease;
+  }
+  .option-btn:hover:not(:disabled) { background: rgba(59,130,246,0.12); border-color: var(--sky); transform: translateX(3px); }
+  .option-btn .opt-label {
+    width: 28px; height: 28px; min-width: 28px; border-radius: 50%;
+    background: rgba(59,130,246,0.15); border: 1.5px solid rgba(59,130,246,0.35);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.72rem; font-weight: 800; color: var(--sky); letter-spacing: 0;
+  }
+  .option-btn.correct { background: rgba(34,197,94,0.12); border-color: #22C55E; }
+  .option-btn.correct .opt-label { background: rgba(34,197,94,0.2); border-color: #22C55E; color: #22C55E; }
+  .option-btn.wrong { background: rgba(239,68,68,0.1); border-color: #EF4444; }
+  .option-btn.wrong .opt-label { background: rgba(239,68,68,0.2); border-color: #EF4444; color: #EF4444; }
+  .option-btn:disabled { cursor: not-allowed; }
+
+  .feedback-msg { margin-top: 14px; padding: 10px 16px; border-radius: 10px; font-size: 0.82rem; font-weight: 600; opacity: 0; transition: opacity 0.3s; }
+  .feedback-msg.show { opacity: 1; }
+  .feedback-msg.correct { background: rgba(34,197,94,0.12); color: #86EFAC; }
+  .feedback-msg.wrong   { background: rgba(239,68,68,0.1);   color: #FCA5A5; }
+  .next-btn-wrap { margin-top: 22px; }
+
+  #screen-result { padding-top: 80px; text-align: center; }
+
+  .score-ring-wrap { position: relative; width: 140px; height: 140px; margin: 0 auto 28px; }
+  .score-ring { transform: rotate(-90deg); width: 140px; height: 140px; }
+  .score-ring-bg { fill: none; stroke: rgba(255,255,255,0.08); stroke-width: 10; }
+  .score-ring-fill { fill: none; stroke-width: 10; stroke-linecap: round; transition: stroke-dashoffset 1.4s cubic-bezier(0.4,0,0.2,1); }
+  .score-inner { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  .score-num { font-family: 'Cinzel', serif; font-size: 2.6rem; font-weight: 900; line-height: 1; }
+  .score-denom { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; color: var(--pale); opacity: 0.7; margin-top: 2px; }
+  .score-grade { font-family: 'Cinzel', serif; font-size: clamp(1.1rem, 4vw, 1.5rem); font-weight: 700; color: var(--gold-l); margin-bottom: 8px; }
+  .result-detail { font-size: 0.82rem; color: var(--pale); opacity: 0.7; margin-bottom: 28px; }
+
+  .review-list { text-align: left; margin: 20px 0; }
+  .review-item { padding: 10px 14px; margin-bottom: 8px; border-radius: 10px; font-size: 0.8rem; font-weight: 600; display: flex; align-items: center; gap: 10px; }
+  .review-item.ok  { background: rgba(34,197,94,0.1);  color: #86EFAC; border-left: 3px solid #22C55E; }
+  .review-item.bad { background: rgba(239,68,68,0.08); color: #FCA5A5; border-left: 3px solid #EF4444; }
+  .review-icon { font-size: 1rem; flex-shrink: 0; }
+
+  .cert-section { margin-top: 10px; }
+  .cert-preview-wrap { border: 1px solid var(--card-bd); border-radius: 14px; overflow: hidden; margin: 16px 0; box-shadow: 0 12px 40px rgba(0,0,0,0.5); }
+  #cert-canvas { display: block; width: 100%; height: auto; }
+  .download-row { display: flex; flex-direction: column; gap: 10px; margin-top: 16px; }
+
+  /* Download status message */
+  #dl-status { font-size: 0.78rem; text-align: center; padding: 8px 12px; border-radius: 8px; display: none; margin-top: 8px; }
+  #dl-status.success { background: rgba(34,197,94,0.12); color: #86EFAC; display: block; }
+  #dl-status.info    { background: rgba(59,130,246,0.12); color: #93C5FD; display: block; }
+
+  .dots { display: flex; gap: 6px; justify-content: center; margin-top: 28px; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--sky); opacity: 0.3; animation: pulse 1.5s ease-in-out infinite; }
+  .dot:nth-child(2) { animation-delay: 0.25s; }
+  .dot:nth-child(3) { animation-delay: 0.5s; }
+
+  .confetti-row { display: flex; justify-content: center; gap: 6px; margin-bottom: 16px; font-size: 1.4rem; }
+
+  @media(max-width:400px) { .card { padding: 28px 20px; } .btn { padding: 14px 28px; font-size: 0.82rem; } }
+</style>
+</head>
+<body>
+
+<div class="bg-layer"></div>
+
+<svg class="bg-chakra" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="200" cy="200" r="180" stroke="#60A5FA" stroke-width="4"/>
+  <circle cx="200" cy="200" r="160" stroke="#60A5FA" stroke-width="1"/>
+  <circle cx="200" cy="200" r="28" stroke="#60A5FA" stroke-width="4"/>
+  <circle cx="200" cy="200" r="12" stroke="#60A5FA" stroke-width="2"/>
+  <g id="spokes" stroke="#60A5FA" stroke-width="1.5"></g>
+</svg>
+
+<svg class="bg-chakra-left" viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="200" cy="200" r="180" stroke="#60A5FA" stroke-width="4"/>
+  <circle cx="200" cy="200" r="28" stroke="#60A5FA" stroke-width="4"/>
+  <g id="spokes2" stroke="#60A5FA" stroke-width="1.5"></g>
+</svg>
+
+<header class="site-header">
+  <div class="logo">NSS</div>
+  <div class="event-tag">📅 April 20, 2026</div>
+</header>
+
+<!-- SCREEN 1: WELCOME -->
+<section class="screen active fade-in" id="screen-welcome">
+  <div style="text-align:center; max-width:480px; width:100%;">
+    <div class="welcome-badge">✦ Ambedkar Jayanti 2026 ✦</div>
+
+    <svg class="chakra-icon-lg" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="100" cy="100" r="90" stroke="#3B82F6" stroke-width="5"/>
+      <circle cx="100" cy="100" r="75" stroke="#60A5FA" stroke-width="1.5" stroke-dasharray="4 3"/>
+      <circle cx="100" cy="100" r="14" stroke="#3B82F6" stroke-width="5"/>
+      <circle cx="100" cy="100" r="5" fill="#60A5FA"/>
+    </svg>
+
+    <h1 class="display-title" style="margin-bottom:14px;">Quiz<br>Competition</h1>
+    <div class="gold-line"></div>
+    <p class="body-text" style="margin-bottom:32px; opacity:0.7; font-size:0.82rem;">
+      Celebrating the birth anniversary of<br>
+      <strong style="color:var(--pale);">Dr. Bhimrao Ramji Ambedkar</strong><br>
+      the architect of our Constitution
+    </p>
+    <button class="btn btn-primary" onclick="goTo('screen-register')">Begin Quiz &nbsp;→</button>
+    <p class="start-note">Organised by NSS</p>
+    <div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+  </div>
+</section>
+
+<!-- SCREEN 2: REGISTER -->
+<section class="screen" id="screen-register">
+  <div class="card slide-up">
+    <p class="label-text" style="margin-bottom:6px;">Step 1 of 2</p>
+    <h2 class="section-title" style="margin-bottom:4px;">Your Details</h2>
+    <p class="subtitle" style="margin-bottom:24px; font-size:0.95rem;">Enter your information to begin</p>
+    <div class="divider"></div>
+
+    <div class="form-group">
+      <label for="inp-name">Full Name</label>
+      <input type="text" id="inp-name" placeholder="e.g. Kaustubh Bhabal" autocomplete="off" maxlength="60">
+    </div>
+    <div class="form-group">
+      <label for="inp-year">Academic Year</label>
+      <select id="inp-year">
+        <option value="">— Select Year —</option>
+        <option value="Second Year (SE)">Second Year (SE)</option>
+        <option value="Third Year (TE)">Third Year (TE)</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="inp-branch">Branch</label>
+      <select id="inp-branch">
+        <option value="">— Select Branch —</option>
+        <option value="AI & ML (AIML)">AI &amp; ML (AIML)</option>
+        <option value="Computer Engineering (CS)">Computer Engineering (CS)</option>
+        <option value="Information Technology (IT)">Information Technology (IT)</option>
+        <option value="Electronics & Telecom (ENTC)">Electronics &amp; Telecom (ENTC)</option>
+        <option value="Mechanical Engineering (MECH)">Mechanical Engineering (MECH)</option>
+        <option value="AI & DS (AIDS)">AI &amp; DS (AIDS)</option>
+        <option value="Electronics and Computer Engineering (ECE)">Electronics and Computer Engineering (ECE)</option>
+        <option value="Internet of Things (IOT)">Internet of Things (IOT)</option>
+      </select>
+    </div>
+
+    <div id="reg-error" style="display:none; color:#FCA5A5; font-size:0.8rem; margin-bottom:12px; padding:10px; background:rgba(239,68,68,0.1); border-radius:8px; border:1px solid rgba(239,68,68,0.2);">
+      ⚠️ Please fill in all fields before continuing.
+    </div>
+
+    <button class="btn btn-primary" onclick="submitRegister()">Start Quiz &nbsp;→</button>
+    <button class="btn btn-outline" style="margin-top:10px;" onclick="goTo('screen-welcome')">← Back</button>
+  </div>
+</section>
+
+<!-- SCREEN 3: QUIZ -->
+<section class="screen" id="screen-quiz">
+  <div class="quiz-header">
+    <div class="progress-row">
+      <span class="progress-label" id="q-progress-label">Question 1 / 8</span>
+      <div class="progress-bar-wrap">
+        <div class="progress-bar-fill" id="q-progress-bar" style="width:12.5%"></div>
+      </div>
+    </div>
+  </div>
+  <div class="card slide-up">
+    <p class="q-number" id="q-number-label">Question 1</p>
+    <p class="q-text" id="q-text">Loading...</p>
+    <div class="options-grid" id="options-grid"></div>
+    <div class="feedback-msg" id="feedback-msg"></div>
+    <div class="next-btn-wrap" id="next-btn-wrap" style="display:none;">
+      <button class="btn btn-primary" id="next-btn" onclick="nextQuestion()">Next Question &nbsp;→</button>
+    </div>
+  </div>
+</section>
+
+<!-- SCREEN 4: RESULT -->
+<section class="screen" id="screen-result">
+  <div style="width:100%; max-width:540px;">
+    <div style="text-align:center;" class="fade-in">
+      <div class="confetti-row">🎉 🔵 🏆 🔵 🎉</div>
+      <div class="score-ring-wrap">
+        <svg class="score-ring" viewBox="0 0 140 140">
+          <circle class="score-ring-bg" cx="70" cy="70" r="60"/>
+          <circle class="score-ring-fill" id="score-ring-fill" cx="70" cy="70" r="60" stroke-dasharray="377" stroke-dashoffset="377"/>
+        </svg>
+        <div class="score-inner">
+          <div class="score-num" id="score-display">0</div>
+          <div class="score-denom" id="score-denom-label">out of 8</div>
+        </div>
+      </div>
+      <h2 class="score-grade" id="score-grade">Loading...</h2>
+      <p class="result-detail" id="result-detail"></p>
+    </div>
+
+    <div class="card" style="margin-bottom:20px;">
+      <p class="label-text" style="margin-bottom:14px;">Answer Review</p>
+      <div class="review-list" id="review-list"></div>
+    </div>
+
+    <div class="card cert-section">
+      <p class="label-text" style="margin-bottom:6px;">🎓 Your Certificate</p>
+      <h3 class="section-title" style="margin-bottom:4px; font-size:1.1rem;">Certificate of Participation</h3>
+      <p class="body-text" style="font-size:0.78rem; opacity:0.65; margin-bottom:14px;">Preview below</p>
+      <div class="cert-preview-wrap"><canvas id="cert-canvas" width="900" height="640"></canvas></div>
+      <div class="download-row">
+        <button class="btn btn-gold" id="dl-btn" onclick="downloadCertificate()">⬇ Download Certificate</button>
+        <div id="dl-status"></div>
+        <button class="btn btn-outline" onclick="restartQuiz()">↩ Back to Home</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+// Ashoka Chakra spokes
+function addSpokes(groupId, cx, cy, r1, r2) {
+  const g = document.getElementById(groupId);
+  if (!g) return;
+  for (let i = 0; i < 24; i++) {
+    const angle = (i * Math.PI * 2) / 24;
+    const line = document.createElementNS('http://www.w3.org/2000/svg','line');
+    line.setAttribute('x1', cx + Math.cos(angle)*r1);
+    line.setAttribute('y1', cy + Math.sin(angle)*r1);
+    line.setAttribute('x2', cx + Math.cos(angle)*r2);
+    line.setAttribute('y2', cy + Math.sin(angle)*r2);
+    g.appendChild(line);
+  }
+}
+addSpokes('spokes',  200, 200, 28, 160);
+addSpokes('spokes2', 200, 200, 28, 160);
+
+const chakraIcon = document.querySelector('.chakra-icon-lg');
+if (chakraIcon) {
+  const g = document.createElementNS('http://www.w3.org/2000/svg','g');
+  g.setAttribute('stroke','#3B82F6'); g.setAttribute('stroke-width','2');
+  for (let i = 0; i < 24; i++) {
+    const angle = (i * Math.PI * 2) / 24;
+    const line = document.createElementNS('http://www.w3.org/2000/svg','line');
+    line.setAttribute('x1', 100 + Math.cos(angle)*14);
+    line.setAttribute('y1', 100 + Math.sin(angle)*14);
+    line.setAttribute('x2', 100 + Math.cos(angle)*75);
+    line.setAttribute('y2', 100 + Math.sin(angle)*75);
+    g.appendChild(line);
+  }
+  chakraIcon.appendChild(g);
+}
+
+// ── 8 QUESTIONS ──
+const QUESTIONS = [
+  {
+    q: "In which year was Dr. B.R. Ambedkar born?",
+    options: ["1889", "1891", "1895", "1898"],
+    answer: 1,
+    explanation: "Dr. Bhimrao Ramji Ambedkar was born on April 14, 1891, in Mhow (now Dr. Ambedkar Nagar), Madhya Pradesh."
+  },
+  {
+    q: "Dr. B.R. Ambedkar served as the Chairman of which key committee during the framing of the Indian Constitution?",
+    options: ["Public Accounts Committee", "Finance & Planning Committee", "Constitutional Drafting Committee", "Constituent Assembly Steering Committee"],
+    answer: 2,
+    explanation: "Dr. Ambedkar was appointed Chairman of the Drafting Committee of the Constituent Assembly, earning him the title 'Father of the Indian Constitution'."
+  },
+  {
+    q: "Which religion did Dr. B.R. Ambedkar embrace along with approximately 600,000 followers on October 14, 1956?",
+    options: ["Islam", "Christianity", "Sikhism", "Buddhism"],
+    answer: 3,
+    explanation: "On October 14, 1956, in Nagpur, Dr. Ambedkar converted to Buddhism, believing it was the path to dignity and equality. This mass conversion is observed as 'Dhamma Chakra Pravartan Din'."
+  },
+  {
+    q: "Dr. B.R. Ambedkar was India's first Law Minister. Under which Prime Minister did he serve in this role?",
+    options: ["Lal Bahadur Shastri", "Jawaharlal Nehru", "Sardar Vallabhbhai Patel", "Rajendra Prasad"],
+    answer: 1,
+    explanation: "Dr. Ambedkar served as India's first Law and Justice Minister under Prime Minister Jawaharlal Nehru from 1947 to 1951, resigning over disagreements on the Hindu Code Bill."
+  },
+  {
+    q: "From which prestigious university did Dr. B.R. Ambedkar earn his Ph.D. in Economics?",
+    options: ["Oxford University", "Columbia University", "London School of Economics", "Cambridge University"],
+    answer: 1,
+    explanation: "Dr. Ambedkar earned his Ph.D. in Economics from Columbia University, New York, in 1917. He later also obtained a D.Sc. from the London School of Economics."
+  },
+  {
+    q: "Which book written by Dr. B.R. Ambedkar is considered his seminal critique of the caste system?",
+    options: ["The Buddha and His Dhamma", "Annihilation of Caste", "Who Were the Shudras?", "Pakistan or the Partition of India"],
+    answer: 1,
+    explanation: "'Annihilation of Caste' (1936) is Dr. Ambedkar's most celebrated work, originally prepared as a speech, arguing for the complete dismantling of the Hindu caste system."
+  },
+  {
+    q: "Which newspaper did Dr. B.R. Ambedkar found in 1920 to voice the concerns of depressed classes?",
+    options: ["Kesari", "Mooknayak", "Harijan", "Dinbandhu"],
+    answer: 1,
+    explanation: "Dr. Ambedkar founded 'Mooknayak' (Leader of the Voiceless) on January 31, 1920, with financial support from Shahu Maharaj of Kolhapur — one of his earliest platforms for social reform."
+  },
+  {
+    q: "In which year was the Bharat Ratna awarded posthumously to Dr. B.R. Ambedkar?",
+    options: ["1980", "1990", "1999", "2003"],
+    answer: 1,
+    explanation: "The Bharat Ratna was conferred posthumously on Dr. B.R. Ambedkar in 1990 during the tenure of Prime Minister V.P. Singh, recognising his immense contributions to the nation."
+  }
+];
+
+let state = { name: '', year: '', branch: '', currentQ: 0, answers: [], score: 0 };
+
+function goTo(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function submitRegister() {
+  const name   = document.getElementById('inp-name').value.trim();
+  const year   = document.getElementById('inp-year').value;
+  const branch = document.getElementById('inp-branch').value;
+  const errEl  = document.getElementById('reg-error');
+  if (!name || !year || !branch) { errEl.style.display = 'block'; return; }
+  errEl.style.display = 'none';
+  state.name = name; state.year = year; state.branch = branch;
+  state.currentQ = 0; state.answers = []; state.score = 0;
+  goTo('screen-quiz');
+  renderQuestion();
+}
+
+function renderQuestion() {
+  const qIndex = state.currentQ;
+  const qData  = QUESTIONS[qIndex];
+  const total  = QUESTIONS.length;
+
+  document.getElementById('q-progress-label').textContent = `Question ${qIndex+1} / ${total}`;
+  document.getElementById('q-progress-bar').style.width   = `${((qIndex+1)/total)*100}%`;
+  document.getElementById('q-number-label').textContent   = `Question ${qIndex+1}`;
+  document.getElementById('q-text').textContent           = qData.q;
+
+  const grid      = document.getElementById('options-grid');
+  const feedback  = document.getElementById('feedback-msg');
+  const nextWrap  = document.getElementById('next-btn-wrap');
+  const nextBtn   = document.getElementById('next-btn');
+
+  grid.innerHTML = '';
+  feedback.className = 'feedback-msg';
+  feedback.textContent = '';
+  nextWrap.style.display = 'none';
+
+  nextBtn.innerHTML = qIndex === total - 1 ? 'See My Results →' : 'Next Question &nbsp;→';
+
+  const labels = ['A', 'B', 'C', 'D'];
+  qData.options.forEach((opt, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'option-btn';
+    btn.innerHTML = `<span class="opt-label">${labels[i]}</span><span>${opt}</span>`;
+    btn.onclick = () => selectAnswer(i);
+    grid.appendChild(btn);
+  });
+}
+
+function selectAnswer(chosen) {
+  const qData = QUESTIONS[state.currentQ];
+  const btns  = document.querySelectorAll('.option-btn');
+  const feedbackEl = document.getElementById('feedback-msg');
+
+  btns.forEach(b => b.disabled = true);
+  btns[qData.answer].classList.add('correct');
+  if (chosen !== qData.answer) btns[chosen].classList.add('wrong');
+
+  const isCorrect = chosen === qData.answer;
+  feedbackEl.className = `feedback-msg show ${isCorrect ? 'correct' : 'wrong'}`;
+  feedbackEl.textContent = isCorrect
+    ? `✓ Correct! ${qData.explanation}`
+    : `✗ Incorrect. ${qData.explanation}`;
+
+  state.answers.push(chosen);
+  if (isCorrect) state.score++;
+  document.getElementById('next-btn-wrap').style.display = 'block';
+}
+
+function nextQuestion() {
+  state.currentQ++;
+  if (state.currentQ >= QUESTIONS.length) showResults();
+  else renderQuestion();
+}
+
+function showResults() {
+  goTo('screen-result');
+  const score = state.score;
+  const total = QUESTIONS.length;
+
+  document.getElementById('score-denom-label').textContent = `out of ${total}`;
+
+  setTimeout(() => {
+    const ring = document.getElementById('score-ring-fill');
+    const pct  = score / total;
+    const circ = 2 * Math.PI * 60;
+    ring.style.strokeDashoffset = circ * (1 - pct);
+    ring.style.stroke = pct === 1 ? '#22C55E' : pct >= 0.75 ? '#3B82F6' : pct >= 0.5 ? '#F59E0B' : '#EF4444';
+    document.getElementById('score-display').textContent = score;
+    document.getElementById('score-display').style.color = ring.style.stroke;
+  }, 300);
+
+  let gradeTitle, gradeDetail;
+  if (score === 8)      { gradeTitle = 'Perfect Score! 🎉'; gradeDetail = 'Exceptional! All 8 correct — a true Ambedkar scholar!'; }
+  else if (score >= 6)  { gradeTitle = 'Excellent! 👏';     gradeDetail = `Outstanding — ${score} out of 8 correct!`; }
+  else if (score >= 4)  { gradeTitle = 'Good Job! 👍';      gradeDetail = `Well done — ${score} out of 8. Keep exploring!`; }
+  else if (score >= 2)  { gradeTitle = 'Keep Learning! 📚'; gradeDetail = `${score} correct. Dive deeper into Dr. Ambedkar's legacy.`; }
+  else                  { gradeTitle = 'Try Again! 💪';     gradeDetail = 'No worries — revisit the questions and try once more.'; }
+
+  document.getElementById('score-grade').textContent   = gradeTitle;
+  document.getElementById('result-detail').textContent = gradeDetail;
+
+  const reviewEl = document.getElementById('review-list');
+  reviewEl.innerHTML = '';
+  QUESTIONS.forEach((q, i) => {
+    const ok = state.answers[i] === q.answer;
+    const div = document.createElement('div');
+    div.className = `review-item ${ok ? 'ok' : 'bad'}`;
+    div.innerHTML = `<span class="review-icon">${ok ? '✓' : '✗'}</span><span>Q${i+1}: ${ok ? 'Correct' : 'Incorrect'} (Answer: ${q.options[q.answer]})</span>`;
+    reviewEl.appendChild(div);
+  });
+
+  setTimeout(() => generateCertificate(), 400);
+}
+
+function generateCertificate() {
+  const canvas = document.getElementById('cert-canvas');
+  const ctx    = canvas.getContext('2d');
+  const W = 900, H = 640;
+  canvas.width = W; canvas.height = H;
+
+  const bg = ctx.createLinearGradient(0, 0, W, H);
+  bg.addColorStop(0, '#020818'); bg.addColorStop(0.4, '#050F30'); bg.addColorStop(1, '#0A1D5A');
+  ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+
+  const glow1 = ctx.createRadialGradient(180, 320, 10, 180, 320, 340);
+  glow1.addColorStop(0, 'rgba(26,79,191,0.35)'); glow1.addColorStop(1, 'transparent');
+  ctx.fillStyle = glow1; ctx.fillRect(0,0,W,H);
+
+  const glow2 = ctx.createRadialGradient(720, 280, 10, 720, 280, 300);
+  glow2.addColorStop(0, 'rgba(59,130,246,0.2)'); glow2.addColorStop(1, 'transparent');
+  ctx.fillStyle = glow2; ctx.fillRect(0,0,W,H);
+
+  ctx.strokeStyle = 'rgba(233,184,74,0.7)'; ctx.lineWidth = 3;
+  roundRect(ctx, 22, 22, W-44, H-44, 16); ctx.stroke();
+  ctx.strokeStyle = 'rgba(233,184,74,0.25)'; ctx.lineWidth = 1;
+  roundRect(ctx, 32, 32, W-64, H-64, 12); ctx.stroke();
+
+  ctx.strokeStyle = 'rgba(233,184,74,0.5)'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(60, 108); ctx.lineTo(W-60, 108); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(60, H-108); ctx.lineTo(W-60, H-108); ctx.stroke();
+
+  drawCertChakra(ctx, W/2, 70, 36, 'rgba(59,130,246,0.7)', 'rgba(255,255,255,0.2)');
+  drawCertChakra(ctx, 65, 65, 18, 'rgba(233,184,74,0.35)', 'rgba(233,184,74,0.1)');
+  drawCertChakra(ctx, W-65, 65, 18, 'rgba(233,184,74,0.35)', 'rgba(233,184,74,0.1)');
+  drawCertChakra(ctx, 65, H-65, 18, 'rgba(233,184,74,0.35)', 'rgba(233,184,74,0.1)');
+  drawCertChakra(ctx, W-65, H-65, 18, 'rgba(233,184,74,0.35)', 'rgba(233,184,74,0.1)');
+  ctx.globalAlpha = 0.025; drawCertChakra(ctx, W/2, H/2, 220, '#3B82F6', '#3B82F6'); ctx.globalAlpha = 1;
+
+  ctx.fillStyle = 'rgba(233,184,74,0.8)'; ctx.font = 'bold 13px Arial, sans-serif';
+  ctx.textAlign = 'center'; ctx.fillText('ORGANISED BY NSS', W/2, 132);
+
+  ctx.fillStyle = '#FFFFFF'; ctx.font = 'bold 38px Georgia, serif'; ctx.fillText('CERTIFICATE', W/2, 188);
+  ctx.fillStyle = 'rgba(191,219,254,0.85)'; ctx.font = '16px Georgia, serif'; ctx.fillText('OF  PARTICIPATION', W/2, 214);
+
+  ctx.strokeStyle = 'rgba(233,184,74,0.6)'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(120, 236); ctx.lineTo(W/2-22, 236); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(W/2+22, 236); ctx.lineTo(W-120, 236); ctx.stroke();
+  ctx.save(); ctx.translate(W/2, 236); ctx.rotate(Math.PI/4);
+  ctx.strokeStyle = 'rgba(233,184,74,0.9)'; ctx.lineWidth = 1.5; ctx.strokeRect(-7,-7,14,14); ctx.restore();
+
+  ctx.fillStyle = 'rgba(191,219,254,0.7)'; ctx.font = 'italic 16px Georgia, serif';
+  ctx.textAlign = 'center'; ctx.fillText('This is to certify that', W/2, 272);
+
+  ctx.fillStyle = '#FFFFFF'; ctx.font = 'bold 44px Georgia, serif';
+  ctx.shadowColor = 'rgba(59,130,246,0.5)'; ctx.shadowBlur = 18;
+  ctx.fillText(state.name, W/2, 326); ctx.shadowBlur = 0;
+
+  const nameW = Math.min(ctx.measureText(state.name).width + 40, 500);
+  const lineGrad = ctx.createLinearGradient(W/2-nameW/2, 0, W/2+nameW/2, 0);
+  lineGrad.addColorStop(0,'transparent'); lineGrad.addColorStop(0.5,'rgba(233,184,74,0.8)'); lineGrad.addColorStop(1,'transparent');
+  ctx.strokeStyle = lineGrad; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.moveTo(W/2-nameW/2, 338); ctx.lineTo(W/2+nameW/2, 338); ctx.stroke();
+
+  ctx.fillStyle = 'rgba(191,219,254,0.75)'; ctx.font = '15px Georgia, serif';
+  ctx.fillText(`${state.branch}  •  ${state.year}`, W/2, 368);
+
+  ctx.fillStyle = 'rgba(255,255,255,0.55)'; ctx.font = 'italic 14px Georgia, serif';
+  ctx.fillText('has successfully participated in the', W/2, 398);
+
+  ctx.fillStyle = '#93C5FD'; ctx.font = 'bold 20px Georgia, serif';
+  ctx.fillText('Ambedkar Jayanti Quiz Competition 2026', W/2, 428);
+
+  const bx = W/2-90, by = 453;
+  const scoreGrad = ctx.createLinearGradient(bx, by, bx+180, by+42);
+  scoreGrad.addColorStop(0,'rgba(15,47,138,0.9)'); scoreGrad.addColorStop(1,'rgba(26,79,191,0.9)');
+  ctx.fillStyle = scoreGrad; roundRect(ctx, bx, by, 180, 42, 21); ctx.fill();
+  ctx.strokeStyle='rgba(233,184,74,0.6)'; ctx.lineWidth=1; roundRect(ctx, bx, by, 180, 42, 21); ctx.stroke();
+  ctx.fillStyle = '#FFFFFF'; ctx.font = 'bold 16px Georgia, serif';
+  ctx.fillText(`Score: ${state.score} / ${QUESTIONS.length}`, W/2, by+27);
+
+  ctx.fillStyle = 'rgba(255,255,255,0.4)'; ctx.font = '13px Georgia, serif';
+  ctx.textAlign = 'left'; ctx.fillText('April 20, 2026', 80, H-68);
+  ctx.textAlign = 'right'; ctx.fillText('Organised by NSS  \u00B7  Siddhant COE, Pune', W-80, H-68);
+  ctx.fillStyle = 'rgba(233,184,74,0.5)'; ctx.font = 'italic 13px Georgia, serif';
+}
+
+function drawCertChakra(ctx, cx, cy, r, strokeColor, hubColor) {
+  ctx.save();
+  ctx.strokeStyle = strokeColor; ctx.lineWidth = Math.max(1, r/20);
+  ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI*2); ctx.stroke();
+  ctx.strokeStyle = hubColor;
+  ctx.beginPath(); ctx.arc(cx, cy, r*0.18, 0, Math.PI*2); ctx.stroke();
+  ctx.fillStyle = strokeColor;
+  ctx.beginPath(); ctx.arc(cx, cy, r*0.07, 0, Math.PI*2); ctx.fill();
+  ctx.strokeStyle = strokeColor; ctx.lineWidth = Math.max(0.5, r/35);
+  for (let i = 0; i < 24; i++) {
+    const angle = (i / 24) * Math.PI * 2;
+    ctx.beginPath();
+    ctx.moveTo(cx + Math.cos(angle)*r*0.18, cy + Math.sin(angle)*r*0.18);
+    ctx.lineTo(cx + Math.cos(angle)*r*0.9,  cy + Math.sin(angle)*r*0.9);
+    ctx.stroke();
+  }
+  ctx.restore();
+}
+
+function roundRect(ctx, x, y, w, h, r) {
+  ctx.beginPath();
+  ctx.moveTo(x+r, y); ctx.lineTo(x+w-r, y); ctx.quadraticCurveTo(x+w, y, x+w, y+r);
+  ctx.lineTo(x+w, y+h-r); ctx.quadraticCurveTo(x+w, y+h, x+w-r, y+h);
+  ctx.lineTo(x+r, y+h); ctx.quadraticCurveTo(x, y+h, x, y+h-r);
+  ctx.lineTo(x, y+r); ctx.quadraticCurveTo(x, y, x+r, y); ctx.closePath();
+}
+
+// ── FIXED DOWNLOAD FUNCTION ──
+function downloadCertificate() {
+  const canvas  = document.getElementById('cert-canvas');
+  const statusEl = document.getElementById('dl-status');
+  const safeName = state.name.replace(/[^a-z0-9]/gi, '_').toLowerCase();
+  const filename = `AmbedkarJayanti_Certificate_${safeName}.png`;
+
+  statusEl.className = '';
+  statusEl.style.display = 'none';
+
+  try {
+    // Primary method: toBlob → object URL
+    if (canvas.toBlob) {
+      canvas.toBlob(function(blob) {
+        if (!blob) { fallbackDownload(canvas, filename, statusEl); return; }
+        const url = URL.createObjectURL(blob);
+        const a   = document.createElement('a');
+        a.href     = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        setTimeout(() => URL.revokeObjectURL(url), 5000);
+        statusEl.textContent = '✓ Download started!';
+        statusEl.className = 'success';
+      }, 'image/png', 1.0);
+    } else {
+      fallbackDownload(canvas, filename, statusEl);
+    }
+  } catch(e) {
+    fallbackDownload(canvas, filename, statusEl);
+  }
+}
+
+function fallbackDownload(canvas, filename, statusEl) {
+  try {
+    // Secondary method: dataURL href click
+    const dataURL = canvas.toDataURL('image/png', 1.0);
+    const a = document.createElement('a');
+    a.href     = dataURL;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    statusEl.textContent = '✓ Download started!';
+    statusEl.className = 'success';
+  } catch(e2) {
+    // Last resort: open in new tab so user can long-press / right-click save
+    try {
+      const dataURL = canvas.toDataURL('image/png', 1.0);
+      const win = window.open();
+      if (win) {
+        win.document.write(`<img src="${dataURL}" style="max-width:100%"><p style="font-family:sans-serif;color:#555">Right-click the image → Save As to download your certificate.</p>`);
+        statusEl.textContent = '↗ Certificate opened in a new tab — right-click to save.';
+        statusEl.className = 'info';
+      } else {
+        statusEl.textContent = '⚠ Pop-up blocked. Please allow pop-ups and try again.';
+        statusEl.className = 'info';
+      }
+    } catch(e3) {
+      statusEl.textContent = '⚠ Could not download. Try right-clicking the certificate preview and choosing "Save image".';
+      statusEl.className = 'info';
+    }
+  }
+}
+
+function restartQuiz() {
+  state = { name:'', year:'', branch:'', currentQ:0, answers:[], score:0 };
+  document.getElementById('inp-name').value   = '';
+  document.getElementById('inp-year').value   = '';
+  document.getElementById('inp-branch').value = '';
+  goTo('screen-welcome');
+}
+</script>
+</body>
+</html>
